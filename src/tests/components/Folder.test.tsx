@@ -37,9 +37,9 @@ describe('Folder Tests', () => {
     expect(screen.queryByText('Expenses claim form')).not.toBeInTheDocument();
     expect(screen.queryByText("2017-05-02")).not.toBeInTheDocument();
     fireEvent.click(folder_name);
-    expect(screen.getByText("doc")).toBeInTheDocument();
-    expect(screen.getByText('Expenses claim form')).toBeInTheDocument();
-    expect(screen.getByText("2017-05-02")).toBeInTheDocument();
+    expect(screen.queryByText("doc")).toBeInTheDocument();
+    expect(screen.queryByText('Expenses claim form')).toBeInTheDocument();
+    expect(screen.queryByText("2017-05-02")).toBeInTheDocument();
   });
 
 

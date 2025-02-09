@@ -4,8 +4,11 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import File, { FileData } from './components/File'
 import Folder, { FolderData } from './components/Folder'
+import FilterBox from './components/FilterBox'
 
 function App() {
+  const [filter, setFilter] = useState("");
+
   const data: (FileData|FolderData)[] = [
     {
         "type": "pdf",
@@ -58,14 +61,21 @@ function App() {
     }
   ]
 
-  console.log("Received data of type " + typeof(data));
-  const fileList = data.map((file_item, index) => 
+  const filtered_data = filter != "" ? data.filter((item) => item.name === filter) : data;
+  const fileList = filtered_data.map((file_item, index) => 
     file_item.type === "folder" ?
       <Folder key={index} type={file_item.type} name={file_item.name} files={file_item.files} /> :
       <File key={index} type={file_item.type} name={file_item.name} added={file_item.added} />
   )
 
-  return (fileList);
+  return (
+    <div>
+      <h2>File Browser</h2>
+      {fileList}
+      <FilterBox setFilter={setFilter}/>
+    </div>
+    
+  );
     
 }
 
