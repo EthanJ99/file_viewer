@@ -18,9 +18,9 @@ function Folder({ type, name, files }: FolderData) {
     const fileList = files?.map((fileItem, index) =>
         <File
             key={index}
-            name={fileItem["name"]}
-            type={fileItem["type"]}
-            added={fileItem["added"]} />
+            name={fileItem.name}
+            type={fileItem.type}
+            added={fileItem.added} />
     );
 
     // Not returning the folder type as the list looks better without it
