@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import File from '../components/File';
 import { FileData } from '../components/File';
 
@@ -8,8 +9,15 @@ export interface FolderData {
 }
 
 function Folder({ type, name, files }: FolderData) {
-    const fileList = files?.map((fileItem) =>
+    const [isOpen, setIsOpen] = useState(false);
+
+    function handleClick() {
+        setIsOpen(!isOpen);
+    }
+
+    const fileList = files?.map((fileItem, index) =>
         <File
+            key={index}
             name={fileItem["name"]}
             type={fileItem["type"]}
             added={fileItem["added"]} />
@@ -20,9 +28,10 @@ function Folder({ type, name, files }: FolderData) {
 
         <div>
             <ul className="folderClass">
-                <li className="folderName">{name}</li>
+                <li className="folderName" onClick={() => handleClick()}>📁 {name}</li>
             </ul>
-            {fileList}
+            
+            {isOpen ? fileList : null}
         </div>
     )
 }

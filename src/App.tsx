@@ -59,10 +59,10 @@ function App() {
   ]
 
   console.log("Received data of type " + typeof(data));
-  const fileList = data.map((file_item) => 
+  const fileList = data.map((file_item, index) => 
     file_item.type === "folder" ?
-      <Folder type={file_item.type} name={file_item.name} files={file_item.files} /> :
-      <File type={file_item.type} name={file_item.name} added={file_item.added} />
+      <Folder key={index} type={file_item.type} name={file_item.name} files={file_item.files} /> :
+      <File key={index} type={file_item.type} name={file_item.name} added={file_item.added} />
   )
 
   return (fileList);

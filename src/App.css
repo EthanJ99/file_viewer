@@ -25,4 +25,5 @@ li.fileList > ul {
 
 .folderName {
   font-style: italic;
+  cursor: pointer;
 }
