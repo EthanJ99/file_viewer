@@ -4,15 +4,11 @@ import File from '../../components/File';
 
 describe('File Tests', () => {
   it('renders file component with valid props', () => {
-    render(<File file_type="pdf" name="document" date_added="2025-08-02"/>);
+    render(<File type="pdf" name="document" added="2025-08-02"/>);
 
-    const list = screen.getByRole("list");
-    const file_type = screen.getByText("pdf");
-    const name = screen.getByText("document");
-    const date_added = screen.getByText("2025-08-02");
-    expect(list).toBeInTheDocument();
-    expect(file_type).toBeInTheDocument();
-    expect(name).toBeInTheDocument();
-    expect(date_added).toBeInTheDocument();
+    expect(screen.getByRole("list")).toBeInTheDocument();
+    expect(screen.getByText("pdf")).toBeInTheDocument();
+    expect(screen.getByText("document")).toBeInTheDocument();
+    expect(screen.getByText("2025-08-02")).toBeInTheDocument();
   });
 });

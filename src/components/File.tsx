@@ -1,15 +1,15 @@
-interface FileProps {
-    file_type: string;
+export interface FileData {
+    type: string;
     name: string,
-    date_added: string
+    added: string,
 }
 
-function File ({file_type, name, date_added}: FileProps) {
+function File ({type, name, added}: FileData) {
     return (
         <ul className="fileClass">
            <li className="fileName">{name}</li>
-           <li className="fileType">{file_type}</li>
-           <li className="dateAdded">{date_added}</li>
+           <li className="fileType">{type}</li>
+           <li className="dateAdded">{added}</li>
         </ul>
     )
 }
