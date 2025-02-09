@@ -1,50 +1,23 @@
-# React + TypeScript + Vite
+# File Browser
+*React/Typescript*
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A basic file browser which can display the name, file type and date added of a list of files uploaded to a web server. Also has the option to filter by filename and open/close folders.
 
-Currently, two official plugins are available:
+![screenshot of a file browser web application](image.png)
+## Requirements
+Requires npm 10.1.0 or greater.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Running web page and tests
+To install requirements and launch the website, run the following commands from the root directory and copy the localhost link into a web browser. The test input data is hardcoded into the app for now however this could be refactored later.
+```
+npm install
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+To launch the tests, run this command:
 ```
+npm test
+```
+
+## Finishing the website
+An additional step would be to allow the user to sort files by their name/size/date they were added. To do this, a custom sorting method could be written and used before the .filter() and .map() stages in App.tsx. As we are using custom data types for files/folders, we could write a seperate sorting method for each parameter (e.g. a function to sort by name, another one for date and another for size). The function could step through each item in the input data in sequence and do a comparison with the remaining items in the list to find out if it should be placed before/after them.
